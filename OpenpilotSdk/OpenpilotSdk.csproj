@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net10.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<DebugType>embedded</DebugType>
@@ -51,6 +51,7 @@
 		<PackageReference Include="System.Drawing.Common" Version="10.0.0-rc.2.25502.107" />
 		<PackageReference Include="Zeroconf" Version="3.7.16" />
 		<PackageReference Include="ZstdSharp.Port" Version="0.8.6" />
+		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

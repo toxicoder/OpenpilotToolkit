@@ -1,0 +1,128 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1116" d:DesignHeight="604"
+        x:Class="OpenpilotToolkit.AvaloniaUI.MainWindow"
+        Title="OPENPILOT TOOLKIT">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Export">
+                <Grid ColumnDefinitions="220,*,200" RowDefinitions="Auto,*,Auto">
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="5">
+                        <TextBox Name="txtExportFolder" Watermark="Export Folder" Text="C:\Openpilot" Width="800" />
+                        <Button Name="btnBrowse" Content="Browse" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
+                        <Button Name="btnRefreshVideos" Content="Refresh Route List" />
+                        <Button Name="btnExport" Content="Export Selected Route(s)" />
+                        <Button Name="btnDeleteRoutes" Content="Delete Selected Route(s)" />
+                        <Button Name="btnExportGpx" Content="GPX Export" />
+                        <Button Name="btnOsmUpload" Content="Upload GPS to OSM" />
+                        <Button Name="btnExportMapillary" Content="Mapillary Export" IsEnabled="False" />
+                    </StackPanel>
+
+                    <ListBox Name="lbRoutes" Grid.Row="1" Grid.Column="1" Margin="5" />
+
+                    <StackPanel Grid.Row="1" Grid.Column="2" Margin="5">
+                        <HeaderedContentControl Header="Route Info">
+                            <DataGrid Name="dgvRouteInfo" />
+                        </HeaderedContentControl>
+                        <TextBlock Text="Tasks" FontWeight="Bold" Margin="0,10,0,0" />
+                        <ScrollViewer>
+                            <StackPanel Name="tlpTasks" />
+                        </ScrollViewer>
+                    </StackPanel>
+
+                    <HeaderedContentControl Header="Export Camera" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox Name="cbFrontCamera" Content="Front" IsChecked="True" />
+                            <CheckBox Name="cbWideCamera" Content="Wide" />
+                            <CheckBox Name="cbDriverCamera" Content="Driver" />
+                        </StackPanel>
+                    </HeaderedContentControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Remote">
+                <StackPanel Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Name="btnUpdate" Content="Reinstall Openpilot" />
+                    <Button Name="btnReboot" Content="Reboot" />
+                    <Button Name="btnShutdown" Content="Shutdown" />
+                    <Button Name="btnOpenSettings" Content="Open Settings" />
+                    <Button Name="btnCloseSettings" Content="Close Settings" />
+                    <Button Name="btnFlashPanda" Content="Flash Panda" />
+                    <Button Name="btnInstallEmu" Content="Install Emu" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Settings">
+                <StackPanel Spacing="10" Margin="10">
+                    <HeaderedContentControl Header="Route Exporter">
+                        <StackPanel Spacing="5">
+                            <CheckBox Name="cbCombineSegments" Content="Combine Segments" />
+                            <CheckBox Name="cbSeekToKeyframes" Content="Seek to Keyframes" IsChecked="True" />
+                        </StackPanel>
+                    </HeaderedContentControl>
+                    <HeaderedContentControl Header="Openstreetmap API">
+                        <Button Name="btnOsmTest" Content="Authenticate" />
+                    </HeaderedContentControl>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Log">
+                <TextBox Name="txtLog" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" />
+            </TabItem>
+            <TabItem Header="Explorer">
+                <Grid ColumnDefinitions="*,200,200" RowDefinitions="Auto,*">
+                    <TextBox Name="txtWorkingDirectory" Watermark="Working Directory" Grid.Row="0" Grid.Column="0" />
+
+                    <DataGrid Name="dgvExplorer" Grid.Row="1" Grid.Column="0" />
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Spacing="5">
+                        <Button Name="btnOpenpilot" Content="Openpilot" />
+                        <Button Name="btnMediaAndLogs" Content="Media and Logs" />
+                        <Button Name="btnParameters" Content="Parameters" />
+                        <Button Name="btnPersist" Content="Persist" />
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Row="1" Grid.Column="2">
+                        <StackPanel Name="tlpExplorerTasks" />
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Fingerprint">
+                <TextBox Name="txtFingerprint" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" />
+            </TabItem>
+            <TabItem Header="SSH Wizard">
+            </TabItem>
+            <TabItem Header="Fork Installer">
+                <StackPanel Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+                    <TextBox Name="txtForkUsername" Watermark="Fork Username" />
+                    <TextBox Name="txtRepositoryName" Watermark="Repository Name" Text="openpilot" />
+                    <TextBox Name="txtForkBranch" Watermark="Branch Name" />
+                    <Button Name="btnInstallFork" Content="Install" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Flash Wizard">
+            </TabItem>
+            <TabItem Header="Terminal">
+                <Grid ColumnDefinitions="*,200">
+                    <TextBlock Text="Terminal Placeholder" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Spacing="5">
+                        <Button Name="btnTmux" Content="Start TMUX" />
+                        <Button Name="btnExitTmux" Content="Exit TMUX" />
+                        <Button Name="btnTmuxScroll" Content="TMUX Start Scroll" />
+                        <Button Name="btnTmuxEndScroll" Content="TMUX End Scroll" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Donate">
+                <StackPanel Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="If you wish to donate to support development you can do so on the following platforms:" TextWrapping="Wrap" TextAlignment="Center" />
+                    <Button Name="btnKofi" Content="Ko-Fi" />
+                    <Button Name="btnPaypal" Content="Paypal" />
+                    <Button Name="btnBuyMeCoffee" Content="Buy me a coffee" />
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

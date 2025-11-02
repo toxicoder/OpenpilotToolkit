@@ -12,11 +12,12 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 unset PWD
 cd "$REPO_ROOT"
 
-CONFIGURATION="${1:-Release}"
-PROJECT="OpenpilotToolkit/OpenpilotToolkit.csproj"
+PLATFORM="${1:-win-x64}"
+CONFIGURATION="Release"
+PROJECT="OpenpilotToolkit.AvaloniaUI/OpenpilotToolkit.AvaloniaUI.csproj"
 
 echo "================================================"
-echo "Building OpenpilotToolkit ($CONFIGURATION)"
+echo "Building OpenpilotToolkit ($CONFIGURATION) for $PLATFORM"
 echo "================================================"
 
 if [[ ! -f "$PROJECT" ]]; then
@@ -30,13 +31,17 @@ echo ""
 
 dotnet build "$PROJECT" \
     --configuration "$CONFIGURATION" \
-    --runtime win-x64 \
+    --runtime "$PLATFORM" \
     --no-restore \
     /p:EnableWindowsTargeting=true \
     --nologo
 
-OUTPUT_DIR="OpenpilotToolkit/bin/$CONFIGURATION/net10.0-windows10.0.19041/win-x64"
-EXE_PATH="$OUTPUT_DIR/OpenpilotToolkit.exe"
+OUTPUT_DIR="OpenpilotToolkit.AvaloniaUI/bin/$CONFIGURATION/net9.0/$PLATFORM"
+EXE_PATH="$OUTPUT_DIR/OpenpilotToolkit.AvaloniaUI"
+
+if [[ "$PLATFORM" == "win-x64" ]]; then
+    EXE_PATH="$OUTPUT_DIR/OpenpilotToolkit.AvaloniaUI.exe"
+fi
 
 echo ""
 echo "================================================"

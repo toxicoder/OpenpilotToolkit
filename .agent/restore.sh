@@ -12,11 +12,12 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 unset PWD
 cd "$REPO_ROOT"
 
-echo "================================================"
-echo "Restoring OpenpilotToolkit Dependencies"
-echo "================================================"
+PLATFORM="${1:-win-x64}"
+PROJECT="OpenpilotToolkit.AvaloniaUI/OpenpilotToolkit.AvaloniaUI.csproj"
 
-PROJECT="OpenpilotToolkit/OpenpilotToolkit.csproj"
+echo "================================================"
+echo "Restoring OpenpilotToolkit Dependencies for $PLATFORM"
+echo "================================================"
 
 if [[ ! -f "$PROJECT" ]]; then
     echo "❌ Error: Project not found: $PROJECT"
@@ -27,7 +28,7 @@ echo ""
 echo "Restoring $PROJECT..."
 
 dotnet restore "$PROJECT" \
-    --runtime win-x64 \
+    --runtime "$PLATFORM" \
     /p:EnableWindowsTargeting=true \
     --verbosity quiet
 
