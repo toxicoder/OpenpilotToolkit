@@ -208,3 +208,30 @@ bin/{Configuration}/net10.0-windows10.0.19041/win-x64/
 - **Output is not runnable on Linux**: Requires Windows or Wine to execute
 - **PWD issues handled automatically**: Scripts unset PWD before building
 - **Warnings are expected**: WFO1000 and NU1701 warnings are normal and safe
+
+## macOS Build Instructions (Avalonia)
+
+This project includes a cross-platform Avalonia UI that can be built and run on macOS.
+
+### Prerequisites
+
+- **Homebrew**: Ensure [Homebrew](https://brew.sh/) is installed.
+- **libusb**: Install `libusb` for USB device communication:
+  ```bash
+  brew install libusb
+  ```
+
+### Build Command
+
+A dedicated script is provided to build the Avalonia application for macOS.
+
+```bash
+# Build the Avalonia app (Release or Debug)
+bash .agent/build-avalonia.sh
+bash .agent/build-avalonia.sh Debug
+```
+
+### Output Structure
+
+The compiled application bundle will be located at:
+`OpenpilotToolkit.AvaloniaUI/bin/{Configuration}/net9.0/osx-x64/OpenpilotToolkit.AvaloniaUI.app`
